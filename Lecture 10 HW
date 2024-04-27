@@ -1,0 +1,105 @@
+# %% [markdown]
+# #### 1. How do you import the Seaborn package in Python?
+
+# %%
+import seaborn as sns
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# %%
+df = pd.read_csv('https://raw.githubusercontent.com/juanklopper/TutorialData/main/heart_failure.csv')
+
+# %%
+sns.scatterplot(x='age', y='platelets', data=df)
+
+# %%
+sns.lineplot(x='age', y='platelets', data=df)
+
+# %%
+sns.histplot(x='age', data=df) 
+
+# %%
+sns.displot(
+    df,
+    x='age',
+    hue='anaemia',
+    multiple='stack',
+    bins = range(40, 110, 10)
+).set(
+    title='Stacked histogram of age and anaemia',
+    xlabel='Age',
+    ylabel='anaemia count'
+);
+
+# %%
+sns.displot(
+    df,
+    x='age',
+    y='platelets',
+    cbar=True
+).set(
+    title='Age and Platelets',
+    xlabel='Age ',
+    ylabel='Platelet count');
+
+
+# %%
+sns.boxplot(
+    df,
+    x='age', 
+    y='anaemia', 
+).set(
+    title='Boxplot of age and anaemia',
+    xlabel='Age',
+    ylabel='Anaemia'
+);
+
+# %%
+sns.violinplot(
+    df,
+    x='age', 
+    y='anaemia', 
+).set(
+    title='Violin plot of age and anaemia',
+    xlabel='Age',
+    ylabel='Anaemia'
+);
+
+# %%
+sns.barplot(
+    df,
+    x='age', 
+    y='anaemia', 
+).set(
+    title='Bar plot of age and anaemia',
+    xlabel='Age',
+    ylabel='Anaemia'
+);
+
+# %%
+ax = sns.scatterplot(x='age', y='platelets', data=df)
+ax.set_title('My Title')
+
+# %%
+ax = sns.scatterplot(x='age', y='platelets', data=df)
+ax.set_title('My Title')
+plt.savefig('output.png')
+
+
+# %%
+ax = sns.scatterplot(x='age', y='platelets', data=df)
+ax.set_xlabel('X Label')
+ax.set_ylabel('Y Label')
+
+# %%
+sns.set_palette('Blues')
+sns.scatterplot(x='age', y='platelets', data=df)
+
+# %%
+sns.scatterplot(x='age', y='platelets', data=df)
+plt.yscale('log')
+
+# %%
+sns.regplot(x='age', y='platelets', data=df)
+
+# %%
